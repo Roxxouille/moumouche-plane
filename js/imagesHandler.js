@@ -41,8 +41,8 @@ const imagesToLoad = [
       id: "torpedoFlame1"
   },
   {
-      src: "explosion_effect/explosion_01.png",
-      id: "explosion01"
+      src: "explosion_effect/spritesheet.png",
+      id: "explosion"
   }
 ];
 const imagesObjects = [];
