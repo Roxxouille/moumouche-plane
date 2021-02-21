@@ -4,12 +4,19 @@ const ctx = canvas.getContext("2d");
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
+const scoreEl = document.querySelector("#scoreEl");
+const startGameEl = document.querySelector("#startGameEl");
+const modalEl = document.querySelector("#modalEl");
+const bigScoreEl = document.querySelector("#bigScoreEl");
+
 let gameFrame = 0; // each frame add 1, use to do time gated operation
 let gameOver = false; // For now, pause the screen
 
 // directionnal variable for the plane
 let up = false;
 let down = false;
+
+let isImagesLoaded = false;
 
 let player;
 let farGroundCloud1;
@@ -19,9 +26,18 @@ let midGroundCloud2;
 let farGroundMountains;
 let foreGroundMountains;
 let backgroundArray;
+let enemiesArray = [];
+let projectilesArray = [];
+let score = 0;
 
 const init = () => {
   player = new Player();
+  enemiesArray = [];
+  projectilesArray = [];
+  score = 0;
+  gameOver = false;
+  scoreEl.innerHTML = 0;
+  bigScoreEl.innerHTML = 0;
   farGroundCloud1 = imagesObjects.find(
     (image) => image.id == "farGroundCloud1"
   );
@@ -130,7 +146,6 @@ const handleBackground = () => {
   });
 };
 
-const enemiesArray = [];
 // Draw enemies and check collision
 const handleEnemies = () => {
   // spawn enemy
@@ -152,6 +167,9 @@ const handleEnemies = () => {
         !enemy.isDead
       ) {
         enemy.kill();
+        score += 10;
+        scoreEl.innerHTML = score;
+        bigScoreEl.innerHTML = score;
         setTimeout(() => {
           projectilesArray.splice(projectileIndex, 1);
         }, 0);
@@ -189,7 +207,6 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
-const projectilesArray = [];
 // Shoot new Projectile when player press spacebar
 document.addEventListener("keydown", (event) => {
   if (event.code == "Space") {
@@ -205,7 +222,9 @@ const handleProjectiles = () => {
   });
 };
 
+let animationID;
 const animate = () => {
+  animationID = requestAnimationFrame(animate);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handleBackground();
   handleEnemies();
@@ -213,9 +232,17 @@ const animate = () => {
   player.draw();
   player.update();
   gameFrame++;
-  if (!gameOver) {
-    requestAnimationFrame(animate);
+  if (gameOver) {
+    cancelAnimationFrame(animationID);
+    modalEl.classList.remove("hidden");
   }
 };
 
-loadImages(imagesToLoad, init);
+startGameEl.addEventListener("click", () => {
+  if (!isImagesLoaded) {
+    loadImages(imagesToLoad, init);
+  } else {
+    init();
+  }
+  modalEl.classList.add("hidden");
+});

@@ -1,4 +1,3 @@
-
 const imagesToLoad = [
   {
     src: "background/farground_cloud_1.png",
@@ -29,21 +28,21 @@ const imagesToLoad = [
     id: "player",
   },
   {
-      src: "fire_ball_1.png",
-      id: "fireball"
+    src: "fire_ball_1.png",
+    id: "fireball",
   },
   {
-      src: "torpedo_black.png",
-      id: "torpedoBlack"
+    src: "torpedo_black.png",
+    id: "torpedoBlack",
   },
   {
-      src: "torpedo_flame_1.png",
-      id: "torpedoFlame1"
+    src: "torpedo_flame_1.png",
+    id: "torpedoFlame1",
   },
   {
-      src: "explosion_effect/spritesheet.png",
-      id: "explosion"
-  }
+    src: "explosion_effect/spritesheet.png",
+    id: "explosion",
+  },
 ];
 const imagesObjects = [];
 
@@ -53,7 +52,8 @@ const loadImages = (images, onComplete) => {
   const onLoad = () => {
     loaded++;
     if (loaded === images.length) {
-        console.log(imagesObjects);
+      console.log(imagesObjects);
+      isImagesLoaded = true;
       onComplete();
     }
   };
@@ -66,6 +66,3 @@ const loadImages = (images, onComplete) => {
     imagesObjects.push(img);
   }
 };
-
-
-

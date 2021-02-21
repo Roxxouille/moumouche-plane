@@ -2,7 +2,7 @@ class Enemy {
   constructor() {
     this.x = canvas.width + 200;
     this.y = Math.random() * canvas.height;
-    this.speed = 1;
+    this.speed = Math.random() * (2 - 1 ) + 1;
     this.width = 50 * (498 / 187);
     this.height = 50;
     this.image = imagesObjects.find((image) => image.id == "torpedoBlack");

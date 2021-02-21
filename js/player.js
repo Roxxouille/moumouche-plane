@@ -13,10 +13,10 @@ class Player {
     // Player moving up or down
     if (this.y >= 0 && this.y + this.height <= canvas.height) {
       if (down) {
-        this.y += 2;
+        this.y += 3;
       }
       if (up) {
-        this.y -= 2;
+        this.y -= 3;
       }
     }
 
