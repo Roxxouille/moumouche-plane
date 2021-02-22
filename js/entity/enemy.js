@@ -5,10 +5,11 @@ class Enemy {
   constructor() {
     this.id = "_" + Math.random().toString(36).substr(2, 9);
     this.x = canvas.width + 200;
-    this.y = Math.random() * canvas.height;
+
     this.speed = Math.random() * (2 - 1) + 1;
     this.width = 50 * (498 / 187);
     this.height = 50;
+    this.y = Math.random() * ((canvas.height - this.height) - this.height) + this.height;
     this.image = images.find((image) => image.id == "torpedoBlack");
   }
 
