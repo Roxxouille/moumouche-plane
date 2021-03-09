@@ -5,6 +5,7 @@ import { createPlayer, handlePlayer } from "./handler/playerHandler.js";
 import { clearProjectiles, handleProjectile } from "./handler/projectileHandler.js";
 import handleExplosion from "./handler/explosionsHandler.js";
 import { setScore } from "./handler/scoreHandler.js";
+import handleFlyingCoins from "./handler/flyingCoinHandler.js";
 
 const canvas = document.querySelector("canvas");
 canvas.width = innerWidth;
@@ -30,6 +31,7 @@ const animate = () => {
   handleEnemies();
   handleProjectile();
   handleExplosion();
+  handleFlyingCoins();
   gameFrame++;
   if (gameOver) {
     cancelAnimationFrame(animationId);

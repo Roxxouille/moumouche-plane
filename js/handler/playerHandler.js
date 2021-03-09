@@ -11,19 +11,19 @@ const handlePlayer = () => {
 };
 
 document.addEventListener("keydown", (event) => {
-  if (event.code == "ArrowUp") {
+  if (event.code == "ArrowUp" || event.code == "KeyW") {
     player.up = true;
   }
-  if (event.code == "ArrowDown") {
+  if (event.code == "ArrowDown" || event.code == "KeyS") {
     player.down = true;
   }
 });
 
 document.addEventListener("keyup", (event) => {
-  if (event.code == "ArrowUp") {
+  if (event.code == "ArrowUp" || event.code == "KeyW") {
     player.up = false;
   }
-  if (event.code == "ArrowDown") {
+  if (event.code == "ArrowDown" || event.code == "KeyS") {
     player.down = false;
   }
 });

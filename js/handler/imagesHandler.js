@@ -53,6 +53,10 @@ const imagesToLoad = [
     src: "explosion_effect/spritesheet.png",
     id: "explosion",
   },
+  {
+    src: "flying_coin/bronze_coin_down.png",
+    id: "bronzeCoin"
+  }, 
 ];
 
 const images = [];

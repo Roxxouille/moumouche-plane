@@ -2,14 +2,13 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>Basic JavaScript module example</title>
+    <title>Moumouche in a plane</title>
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <script type="module" src="./js/main.js"></script>
   </head>
-  <body>
+  <body class="relative">
     <div class="fixed text-black text-xl ml-2 mt-2 select-none font-bold">
       <span>Score : </span><span id="scoreEl">0</span>
     </div>
@@ -27,6 +26,12 @@
         </div>
       </div>
     </div>
+    <div
+      id="overheat"
+      class="absolute bottom-10 left-10 w-6/12 h-16"
+    ></div>
     <canvas></canvas>
+    <script type="module" src="./js/main.js"></script>
+    <script src="./js/dist/progressbar.js"></script>
   </body>
 </html>
